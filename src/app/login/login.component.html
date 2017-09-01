@@ -1,0 +1,28 @@
+<div *ngIf="!authenticationService.isLoggedIn()">   
+    <h2>Login</h2>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="name" name="username" required 
+            [(ngModel)]="model.username" #username="ngModel"/>
+        </div>
+        <div [hidden]="username.valid || username.pristine">
+            Name is required
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required
+            [(ngModel)]="model.password" 
+            #password="ngModel"/>
+        </div>
+         <div [hidden]="password.valid || password.pristine">
+            Password is required
+        </div>
+        <button type="submit" [disabled]="username.invalid || password.invalid">Login</button>
+    </form>
+</div>
+
+
+<div *ngIf="authenticationService.isLoggedIn()">   
+    <h1>{{ model.username }}</h1>
+</div>

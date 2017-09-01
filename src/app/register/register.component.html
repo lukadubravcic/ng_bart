@@ -1,0 +1,43 @@
+<div *ngIf="!authenticationService.isLoggedIn()">   
+    <h2>Register</h2>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+        <div>   
+            <label for="firstname">Firstname</label>
+            <input type="text" id="firstname" name="firstname" required
+            [(ngModel)]="model.firstname" #firstname="ngModel"/>
+        </div>
+        <div [hidden]="firstname.valid || firstname.pristine">
+            Firstname is required
+        </div>
+        <div>   
+            <label for="lastname">Lastname</label>
+            <input type="text" name="lastname" id="lastname" required
+            [(ngModel)]="model.lastname" #lastname="ngModel"/>
+        </div>
+        <div [hidden]="lastname.valid || lastname.pristine">
+            Lastname is required
+        </div>
+        <div>   
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required
+            [(ngModel)]="model.username" #username="ngModel"/>
+        </div>
+        <div [hidden]="username.valid || username.pristine">
+            Username is required
+        </div>
+        <div>   
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required
+            [(ngModel)]="model.password" #password="ngModel"/>
+        </div>
+        <div [hidden]="password.valid || password.pristine">
+            Password is required
+        </div>
+        <button type="submit" [disabled]="username.invalid || password.invalid || firstname.invalid || lastname.invalid">Register</button>
+    </form>
+</div>
+
+
+<div *ngIf="authenticationService.isLoggedIn()"> 
+TEST
+</div>
